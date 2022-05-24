@@ -1,4 +1,8 @@
 (async function () {
+  if (!window?.localStorage?.sitAlert) {
+    alert("يجب كتابة رقم الجلوس باللغة الأنجليزية فقط");
+    if (window.localStorage) window.localStorage.sitAlert = true;
+  }
   var
     sitNum = document.querySelector(".sit-num"),
     grade  = document.querySelector(".grade"),
