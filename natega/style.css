@@ -22,7 +22,7 @@ input, select, button {
   color: inherit;
   outline: none;
 }
-h2, h3 {
+h2, h3, h4 {
   color: #0075ff;
   text-align: center;
 }
