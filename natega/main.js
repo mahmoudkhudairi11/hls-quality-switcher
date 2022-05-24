@@ -52,7 +52,7 @@
     body.set("sitNum", sitNum.value);
     body.set("grade", grade.value);
     submit.disabled = true;
-    let req = await (await fetch("search.php", {method: "POST", body})).json();
+    let req = await (await fetch("https://vidspace.000webhostapp.com/natega/search.php", {method: "POST", body})).json();
     if (req.error) return setNatega(req.error, 1);
     var {student} = req;
     if (grade.value == "5" || grade.value == "6") setNatega(
