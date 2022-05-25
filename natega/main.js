@@ -49,6 +49,7 @@
     submit = document.querySelector(".submit"),
     natega = document.querySelector(".natega"),
     up     = document.querySelector(".up");
+  sitNum.focus();
   sitNum.addEventListener("input", function () {
     submit.disabled = !this.value.length || !+grade.value;
   });
