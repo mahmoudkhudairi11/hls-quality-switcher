@@ -136,9 +136,9 @@ h2, h3, h4 {
   position: absolute;
   width: 20px;
   height: 20px;
-  top: 0;
+  top: 11px;
   bottom: 0;
-  right: -30px;
+  right: -40px;
   margin: auto;
 }
 .color-explain .entry:first-child::before {
