@@ -38,6 +38,7 @@
     }
     if (gds.every(async g => count(`grade-${g}`) == lts[g])) localStorage.noMoreUpgrades = true;  
   }
+  document.body.classList.remove("downloading");
   if (!window?.localStorage?.sitAlert) {
     alert("الرجاء التأكد من كتابة رقم الجلوس باللغة الإنجليزية");
     if (window.localStorage) window.localStorage.sitAlert = true;
