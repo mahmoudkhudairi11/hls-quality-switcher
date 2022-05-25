@@ -138,36 +138,46 @@ h2, h3 {
   border-color: #000;
 }
 .color-explain {
+  width: fit-content;
+  margin: auto;
+}
+.color-explain h5 {
+  font-size: 30px;
+  margin: 0;
+  width: fit-content;
+}
+.color-explain .entries {
   margin: 0 auto 70px;
   width: fit-content;
   line-height: 3;
   font-size: 24px;
 }
-.color-explain .entry {
+.color-explain .entries .entry {
   position: relative;
   width: fit-content;
 }
-.color-explain .entry::before {
+.color-explain .entries .entry::before {
   content: "";
   position: absolute;
   width: 30px;
   height: 30px;
-  top: 9px;
+  top: 6px;
   bottom: 0;
   right: -45px;
   margin: auto;
   border: 2px solid;
+  border-radius: 50%;
 }
-.color-explain .entry:first-child::before {
+.color-explain .entries .entry:first-child::before {
   background-color: #3366FF;
 }
-.color-explain .entry:nth-child(2)::before {
+.color-explain .entries .entry:nth-child(2)::before {
   background-color: #00B050;
 }
-.color-explain .entry:nth-child(3)::before {
+.color-explain .entries .entry:nth-child(3)::before {
   background-color: #FF0;
 }
-.color-explain .entry:last-child::before {
+.color-explain .entries .entry:last-child::before {
   background-color: #F00;
 }
 .natega {
