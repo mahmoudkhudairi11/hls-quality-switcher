@@ -13,6 +13,32 @@ body {
   grid-template-rows: 1fr 50px;
   gap: 30px;
 }
+body.downloading::after {
+  content: "";
+  position: absolute;
+  width: 20vmin;
+  height: 20vmin;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 5vmin solid #ddd;
+  border-top-color: #0075ff;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body.downloading * {
+  display: none;
+}
 .content-body {
   grid-row: 1;
 }
