@@ -57,7 +57,8 @@
     if (!+this.value || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (e.code == "ArrowUp" || e.code == "ArrowDown" || e.code == "Enter" || e.code == "NumpadEnter") {
       e.preventDefault();
-      submit.disabled = !sitNum.value.length || !+this.value;
+      if (e.code == "ArrowUp" || e.code == "ArrowDown") submit.disabled =  (!sitNum.value.length || !+this.value);
+      if (e.code == "Enter" || e.code == "NumpadEnter") this.blur();
     }
     if (e.code == "Enter" || e.code == "NumpadEnter") submit.click();
     if (e.code == "ArrowUp") this.value++;
