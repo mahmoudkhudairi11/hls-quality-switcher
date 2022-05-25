@@ -236,7 +236,7 @@
 </table>`
     );
     if (grade.value == "4") setNatega(
-`<h5 style="margin-bottom: 20px;font-size: 2.5vw;">التقديرات:</h5><div class="color-explain">
+`<h5 style="margin-bottom: 20px;font-size: 30px;">التقديرات:</h5><div class="color-explain">
   <div class="entry">يفوق التوقعات</div>
   <div class="entry">يمتلك المهارات والمعارف</div>
   <div class="entry">يحتاج إلى بعض الدعم</div>
