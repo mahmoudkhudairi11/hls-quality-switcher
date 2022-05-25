@@ -1,6 +1,7 @@
 :root {
   /* --main-color: #0075ff; */
   --main-color: #ff5722;
+  --main-alpha-color: #ff572208;
 }
 * {
   box-sizing: border-box;
@@ -12,9 +13,9 @@ body {
   font-size: 24px;
   color: #333;
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
-  grid-template-rows: 1fr 50px;
+  grid-template-rows: 300px 1fr 50px;
   gap: 30px;
 }
 body.downloading::after {
@@ -40,11 +41,19 @@ body.downloading::after {
     transform: rotate(360deg);
   }
 }
+header {
+  padding: 50px;
+  text-align: center;
+  background-image: linear-gradient(to bottom, var(--main-alpha-color), transparent);
+}
+header .logo {
+  height: 100%;
+}
 body.downloading * {
   display: none;
 }
 .content-body {
-  grid-row: 1;
+  grid-row: 2;
 }
 input, select, button {
   font-size: inherit;
@@ -53,7 +62,8 @@ input, select, button {
   color: inherit;
   outline: none;
 }
-h2, h3, h4 {
+h2 {margin-top: 0}
+h2, h3 {
   color: var(--main-color);
   text-align: center;
 }
@@ -186,7 +196,7 @@ h2, h3, h4 {
   color: #ff0075;
 }
 .rights {
-  grid-row: 2;
+  grid-row: 3;
   text-align: center;
   font-size: 16px;
   display: flex;
@@ -198,4 +208,38 @@ h2, h3, h4 {
 .rights a {
   color: var(--main-color);
   text-decoration: none;
+}
+.up {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  bottom: 30px;
+  left: 30px;
+  background-color: #fff;
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: .3s;
+  border-radius: 50%;
+}
+.up:hover {
+  transform: rotate(-360deg);
+}
+.up::after {
+  content: "";
+  position: relative;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  width: 43.66%;
+  height: 37%;
+  background-color: var(--main-color);
+  top: -2px;
+  transition: .2s;
+}
+.up:not(.show) {
+  left: -50px
 }

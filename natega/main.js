@@ -47,7 +47,8 @@
     sitNum = document.querySelector(".sit-num"),
     grade  = document.querySelector(".grade"),
     submit = document.querySelector(".submit"),
-    natega = document.querySelector(".natega");
+    natega = document.querySelector(".natega"),
+    up     = document.querySelector(".up");
   sitNum.addEventListener("input", function () {
     submit.disabled = !this.value.length || !+grade.value;
   });
@@ -322,5 +323,18 @@
   </tr>
 </table>`
     );
+    scrollBy({
+      top: document.querySelector("table").offsetTop,
+      behavior: "smooth"
+    });
+  });
+  up.addEventListener("click", function () {
+    scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+  window.addEventListener("scroll", function () {
+    up.classList[scrollY > 700 ? "add" : "remove"]("show");
   });
 })();
