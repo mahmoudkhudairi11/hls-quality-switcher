@@ -129,6 +129,8 @@ h2, h3, h4 {
 .color-explain {
   margin: 0 auto 70px;
   width: fit-content;
+  line-height: 3;
+  font-size: 1.6vw;
 }
 .color-explain .entry {
   position: relative;
@@ -137,12 +139,13 @@ h2, h3, h4 {
 .color-explain .entry::before {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 11px;
+  width: 2vw;
+  height: 2vw;
+  top: 0.7vw;
   bottom: 0;
-  right: -40px;
+  right: -3.5vw;
   margin: auto;
+  border: 1px solid;
 }
 .color-explain .entry:first-child::before {
   background-color: #3366FF;
