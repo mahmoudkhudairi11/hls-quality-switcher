@@ -61,6 +61,9 @@
     if (e.code == "ArrowUp") this.value++;
     if (e.code == "ArrowDown" && this.value > 1) this.value--;
   });
+  sitNum.addEventListener("input", function () {
+    this.classList[this.value && isFinite(this.value) ? "add" : "remove"]("filled");
+  });
   sitNum.addEventListener("change", function () {
     if (!window.sessionStorage) return;
     window.sessionStorage.sitNum = this.value;
@@ -75,6 +78,7 @@
     if (!isFinite(this.options[0].value)) this.options[0].remove();
   });
   sitNum.value = window?.sessionStorage?.sitNum || sitNum.value;
+  sitNum.classList[sitNum.value && isFinite(sitNum.value) ? "add" : "remove"]("filled");
   grade.value = window?.sessionStorage?.grade || grade.value;
   if (isFinite(grade.value) && !isFinite(grade.options[0].value)) grade.options[0].remove();
   submit.disabled = !sitNum.value.length || !+grade.value;

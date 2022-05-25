@@ -90,6 +90,9 @@ h2, h3, h4 {
   background-color: #ddd;
   transition: .3s;
 }
+.sitting-num .sit-num.filled ~ .border {
+  background-color: #e33c08;
+}
 .sitting-num .sit-num ~ .border.focus {
   width: 0;
   background-color: var(--main-color);
@@ -126,6 +129,8 @@ h2, h3, h4 {
 .color-explain {
   margin: 0 auto 70px;
   width: fit-content;
+  line-height: 3;
+  font-size: 1.6vw;
 }
 .color-explain .entry {
   position: relative;
@@ -134,12 +139,13 @@ h2, h3, h4 {
 .color-explain .entry::before {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 11px;
+  width: 2vw;
+  height: 2vw;
+  top: 0.7vw;
   bottom: 0;
-  right: -40px;
+  right: -3.5vw;
   margin: auto;
+  border: 1px solid;
 }
 .color-explain .entry:first-child::before {
   background-color: #3366FF;
@@ -160,11 +166,9 @@ h2, h3, h4 {
   color: #ff0075;
 }
 .natega table {
-  border: 1px solid #000;
   margin: auto;
 }
 .natega table th {
-  border-left: 1px solid #0004;
   color: var(--main-color);
 }
 .natega table th,
