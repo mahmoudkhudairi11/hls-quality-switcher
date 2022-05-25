@@ -1,4 +1,43 @@
 (async function () {
+  async function open() {
+    let {version: v = 1} = (await indexedDB.databases()).find(d => d.name == "natega-db") || {};
+    let req = indexedDB.open("natega-db", localStorage.noMoreUpgrades ? v : v + 1);
+    await new Promise(rs => req.addEventListener(localStorage.noMoreUpgrades ? "success" : "upgradeneeded", rs));
+    return req;
+  }
+  let {result: db, transaction: tr} = await open();
+  async function createObjectStore(db, n) {
+    db.createObjectStore(n, {keyPath: "sitNum"});
+  }
+  async function count(n) {
+    let req = db.transaction(n).objectStore(n).count();
+    await new Promise(rs => req.addEventListener("success", rs));
+    return req.result;
+  }
+  async function add(n, entry) {
+    let req = db.transaction(n, "readwrite").objectStore(n).add(entry);
+    await new Promise(rs => req.addEventListener("success", rs));
+  }
+  async function get(n, sitNum) {
+    let req = db.transaction(n, "readwrite").objectStore(n).get(sitNum);
+    await new Promise(rs => req.addEventListener("success", rs));
+    return req.result;
+  }
+  let gds = [4, 5, 6];
+  if (!localStorage.noMoreUpgrades) {
+    let lts = {4: 185, 5: 162, 6: 179};
+    for (let g of gds) {
+      if (!db.objectStoreNames.contains(`grade-${g}`)) createObjectStore(db, `grade-${g}`);
+    }
+    await new Promise(rs => tr.addEventListener("complete", rs));
+    for (let g of gds) {
+      if (await count(`grade-${g}`) != lts[g]) {
+        let data = await (await fetch(`grades/${g}.json`)).json();
+        for (let student of data) await add(`grade-${g}`, student);
+      }
+    }
+    if (gds.every(async g => count(`grade-${g}`) == lts[g])) localStorage.noMoreUpgrades = true;  
+  }
   if (!window?.localStorage?.sitAlert) {
     alert("الرجاء التأكد من كتابة رقم الجلوس باللغة الإنجليزية");
     if (window.localStorage) window.localStorage.sitAlert = true;
@@ -32,10 +71,11 @@
   });
   grade.addEventListener("change", function () {
     if (!window.sessionStorage) return;
-    this.options[0].remove();
+    if (!isFinite(this.value)) this.options[0].remove();
   }, {once: 1});
   sitNum.value = window?.sessionStorage?.sitNum || sitNum.value;
   grade.value = window?.sessionStorage?.grade || grade.value;
+  if (isFinite(grade.value)) grade.options[0].remove();
   submit.disabled = !sitNum.value.length || !+grade.value;
   function setNatega(data, error) {
     natega.innerHTML = data;
@@ -48,13 +88,10 @@
     if (!sitNum.value.length) return setNatega(`الرجاء إدخال رقم الجلوس`, 1);
     if (!+sitNum.value) return setNatega(`الرجاء إدخال رقم جلوس صحيح`, 1);
     if (!+grade.value) return setNatega(`الرجاء تحديد الصف الدراسي`, 1);
-    let body = new FormData();
-    body.set("sitNum", sitNum.value);
-    body.set("grade", grade.value);
-    submit.disabled = true;
-    let req = await (await fetch("https://vidspace.000webhostapp.com/natega/search.php", {method: "POST", body})).json();
-    if (req.error) return setNatega(req.error, 1);
-    var {student} = req;
+    if (!gds.includes(+grade.value)) return setNatega(`هذا الفصل غير موجود`, 1);
+    let student = await get(`grade-${grade.value}`, +sitNum.value);
+    if (!student) return setNatega("لا يوجد طالب بهذا الرقم", 1);
+    this.disabled = true;
     if (grade.value == "5" || grade.value == "6") setNatega(
 `<table>
   <tr>
