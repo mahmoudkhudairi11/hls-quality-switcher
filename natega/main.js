@@ -54,11 +54,11 @@
   });
   sitNum.addEventListener("keydown", function (e) {
     if (!+this.value || e.ctrlKey || e.shiftKey || e.altKey) return;
-    if (e.code == "ArrowUp" || e.code == "ArrowDown" || e.code == "Enter") {
+    if (e.code == "ArrowUp" || e.code == "ArrowDown" || e.code == "Enter" || e.code == "NumpadEnter") {
       e.preventDefault();
       submit.disabled = !sitNum.value.length || !+this.value;
     }
-    if (e.code == "Enter") submit.click();
+    if (e.code == "Enter" || e.code == "NumpadEnter") submit.click();
     if (e.code == "ArrowUp") this.value++;
     if (e.code == "ArrowDown" && this.value > 1) this.value--;
   });
