@@ -1,6 +1,6 @@
 (async function () {
   async function open() {
-    let {version: v = 1} = (await indexedDB.databases()).find(d => d.name == "natega-db") || {};
+    let {version: v} = (await indexedDB.databases()).find(d => d.name == "natega-db") || {version: 0};
     let req = indexedDB.open("natega-db", localStorage.noMoreUpgrades ? v : v + 1);
     await new Promise(rs => req.addEventListener(localStorage.noMoreUpgrades ? "success" : "upgradeneeded", rs));
     return req;
