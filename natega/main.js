@@ -72,11 +72,11 @@
   });
   grade.addEventListener("change", function () {
     if (!window.sessionStorage) return;
-    if (!isFinite(this.value)) this.options[0].remove();
-  }, {once: 1});
+    if (!isFinite(this.options[0].value)) this.options[0].remove();
+  });
   sitNum.value = window?.sessionStorage?.sitNum || sitNum.value;
   grade.value = window?.sessionStorage?.grade || grade.value;
-  if (isFinite(grade.value)) grade.options[0].remove();
+  if (isFinite(grade.value) && !isFinite(grade.options[0].value)) grade.options[0].remove();
   submit.disabled = !sitNum.value.length || !+grade.value;
   function setNatega(data, error) {
     natega.innerHTML = data;
@@ -232,7 +232,7 @@
 </table>`
     );
     if (grade.value == "4") setNatega(
-`<h5 style="margin:0">التقديرات:</h5><div class="color-explain">
+`<h5 style="margin-bottom: 20px;font-size: 2.5vw;">التقديرات:</h5><div class="color-explain">
   <div class="entry">يفوق التوقعات</div>
   <div class="entry">يمتلك المهارات والمعارف</div>
   <div class="entry">يحتاج إلى بعض الدعم</div>
