@@ -105,14 +105,14 @@ h2, h3, h4 {
   border: 1px solid var(--main-color);
   cursor: pointer;
   border-radius: 6px;
+  padding: 12px 16px;
 }
 .submit {
   background-color: #fff;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   cursor: pointer;
-  padding-left: 70px;
-  padding-right: 70px;
+  padding: 12px 54px;
   transition: .3s;
   border-radius: 6px;
 }
