@@ -1,0 +1,198 @@
+:root {
+  /* --main-color: #0075ff; */
+  --main-color: #ff5722;
+}
+* {
+  box-sizing: border-box;
+}
+.disclaimer {display: none}
+body {
+  background-color: #f8f8f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 50px;
+  gap: 30px;
+}
+body.downloading::after {
+  content: "";
+  position: absolute;
+  width: 20vmin;
+  height: 20vmin;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 5vmin solid #ddd;
+  border-top-color: var(--main-color);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body.downloading * {
+  display: none;
+}
+.content-body {
+  grid-row: 1;
+}
+input, select, button {
+  font-size: inherit;
+  font-family: inherit;
+  padding: 1em;
+  color: inherit;
+  outline: none;
+}
+h2, h3, h4 {
+  color: var(--main-color);
+  text-align: center;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70vw;
+  margin: 0 auto 100px;
+  gap: 30px;
+  justify-content: center;
+}
+.sitting-num {
+  position: relative;
+}
+.sitting-num .sit-num {
+  width: 100%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+}
+.sitting-num .sit-num:focus {
+  cursor: text;
+}
+.sitting-num .sit-num::placeholder {transition: .15s}
+.sitting-num .sit-num:focus::placeholder {
+  opacity: 0;
+}
+.sitting-num .sit-num ~ .border {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ddd;
+  transition: .3s;
+}
+.sitting-num .sit-num.filled ~ .border {
+  background-color: #e33c08;
+}
+.sitting-num .sit-num ~ .border.focus {
+  width: 0;
+  background-color: var(--main-color);
+}
+.sitting-num .sit-num:focus ~ .border.focus {
+  width: 100%;
+}
+.grade {
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  cursor: pointer;
+  border-radius: 6px;
+}
+.submit {
+  background-color: #fff;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  cursor: pointer;
+  padding-left: 70px;
+  padding-right: 70px;
+  transition: .3s;
+  border-radius: 6px;
+}
+.submit:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+.submit:disabled {
+  background-color: var(--main-color)10;
+  cursor: default;
+  color: var(--main-color);
+  border-color: #000;
+}
+.color-explain {
+  margin: 0 auto 70px;
+  width: fit-content;
+}
+.color-explain .entry {
+  position: relative;
+  width: fit-content;
+}
+.color-explain .entry::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 11px;
+  bottom: 0;
+  right: -40px;
+  margin: auto;
+}
+.color-explain .entry:first-child::before {
+  background-color: #3366FF;
+}
+.color-explain .entry:nth-child(2)::before {
+  background-color: #00B050;
+}
+.color-explain .entry:nth-child(3)::before {
+  background-color: #FF0;
+}
+.color-explain .entry:last-child::before {
+  background-color: #F00;
+}
+.natega {
+  text-align: center;
+}
+.natega.error {
+  color: #ff0075;
+}
+.natega table {
+  margin: auto;
+}
+.natega table th {
+  color: var(--main-color);
+}
+.natega table th,
+.natega table td {
+  padding: 20px;
+}
+.natega table tr:nth-child(2n + 1) {
+  background-color: #fff;
+}
+.natega table .section {
+  background-color: var(--main-color);
+  color: #fff;
+}
+.natega .fail {
+  color: #ff0075;
+}
+.rights {
+  grid-row: 2;
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: ltr;
+  gap: 10px;
+}
+.rights a {
+  color: var(--main-color);
+  text-decoration: none;
+}
