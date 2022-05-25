@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;700&display=swap');
 :root {
   /* --main-color: #0075ff; */
   --main-color: #ff5722;
@@ -9,7 +10,7 @@
 .disclaimer {display: none}
 body {
   background-color: #f8f8f8;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: 24px;
   color: #333;
   margin: 0;
