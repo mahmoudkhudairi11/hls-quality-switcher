@@ -10,16 +10,16 @@
     db.createObjectStore(n, {keyPath: "sitNum"});
   }
   async function count(n) {
-    let req = db.transaction(n).objectStore(n).count();
+    let req = db.transaction(["grade-4", "grade-5", "grade-6"]).objectStore(n).count();
     await new Promise(rs => req.addEventListener("success", rs));
     return req.result;
   }
   async function add(n, entry) {
-    let req = db.transaction(n, "readwrite").objectStore(n).add(entry);
+    let req = db.transaction(["grade-4", "grade-5", "grade-6"], "readwrite").objectStore(n).add(entry);
     await new Promise(rs => req.addEventListener("success", rs));
   }
   async function get(n, sitNum) {
-    let req = db.transaction(n, "readwrite").objectStore(n).get(sitNum);
+    let req = db.transaction(["grade-4", "grade-5", "grade-6"], "readwrite").objectStore(n).get(sitNum);
     await new Promise(rs => req.addEventListener("success", rs));
     return req.result;
   }
@@ -36,7 +36,7 @@
         for (let student of data) await add(`grade-${g}`, student);
       }
     }
-    if (gds.every(async g => count(`grade-${g}`) == lts[g])) localStorage.noMoreUpgrades = true;  
+    if (gds.every(async g => await count(`grade-${g}`) == lts[g])) localStorage.noMoreUpgrades = true;  
   }
   document.body.classList.remove("downloading");
   if (!window?.localStorage?.sitAlert) {
@@ -49,15 +49,14 @@
     submit = document.querySelector(".submit"),
     natega = document.querySelector(".natega"),
     up     = document.querySelector(".up");
-  sitNum.focus();
   sitNum.addEventListener("input", function () {
-    submit.disabled = !this.value.length || !+grade.value;
+    submit.disabled = !+this.value || !this.value.length || !+grade.value;
   });
   sitNum.addEventListener("keydown", function (e) {
     if (!+this.value || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (e.code == "ArrowUp" || e.code == "ArrowDown" || e.code == "Enter" || e.code == "NumpadEnter") {
       e.preventDefault();
-      if (e.code == "ArrowUp" || e.code == "ArrowDown") submit.disabled =  (!sitNum.value.length || !+this.value);
+      if (e.code == "ArrowUp" || e.code == "ArrowDown") submit.disabled = !+sitNum.value || !sitNum.value.length || !+this.value;
       if (e.code == "Enter" || e.code == "NumpadEnter") this.blur();
     }
     if (e.code == "Enter" || e.code == "NumpadEnter") submit.click();
@@ -72,19 +71,21 @@
     window.sessionStorage.sitNum = this.value;
   });
   grade.addEventListener("change", function () {
-    submit.disabled = !sitNum.value.length || !+this.value;
+    submit.disabled = !+sitNum.value || !sitNum.value.length || !+this.value;
     if (!window.sessionStorage) return;
     window.sessionStorage.grade = this.value;
   });
   grade.addEventListener("change", function () {
     if (!window.sessionStorage) return;
-    if (!isFinite(this.options[0].value)) this.options[0].remove();
+    this.classList[isFinite(this.value) ? "add" : "remove"]("active");
+    if (!isFinite(this.options[0].value)) this.options[0].disabled = true;
   });
   sitNum.value = window?.sessionStorage?.sitNum || sitNum.value;
   sitNum.classList[sitNum.value && isFinite(sitNum.value) ? "add" : "remove"]("filled");
   grade.value = window?.sessionStorage?.grade || grade.value;
-  if (isFinite(grade.value) && !isFinite(grade.options[0].value)) grade.options[0].remove();
-  submit.disabled = !sitNum.value.length || !+grade.value;
+  grade.classList[isFinite(grade.value) ? "add" : "remove"]("active");
+  if (isFinite(grade.value) && !isFinite(grade.options[0].value)) grade.options[0].disabled = true;
+  submit.disabled = !+sitNum.value || !sitNum.value.length || !+grade.value;
   function setNatega(data, error) {
     natega.innerHTML = data;
     natega.classList[error ? "add" : "remove"]("error");
@@ -94,11 +95,11 @@
   }
   submit.addEventListener("click", async function () {
     if (!sitNum.value.length) return setNatega(`الرجاء إدخال رقم الجلوس`, 1);
-    if (!+sitNum.value) return setNatega(`الرجاء إدخال رقم جلوس صحيح`, 1);
+    if (!+sitNum.value) return setNatega(`الرجاء إدخال رقم جلوس صالح`, 1);
     if (!+grade.value) return setNatega(`الرجاء تحديد الصف الدراسي`, 1);
     if (!gds.includes(+grade.value)) return setNatega(`هذا الفصل غير موجود`, 1);
     let student = await get(`grade-${grade.value}`, +sitNum.value);
-    if (!student) return setNatega("لا يوجد طالب بهذا الرقم", 1);
+    if (!student) return setNatega("رقم الجلوس غير صحيح", 1);
     this.disabled = true;
     if (grade.value == "5" || grade.value == "6") setNatega(
 `<table>
@@ -333,6 +334,8 @@
       behavior: "smooth"
     });
   });
+  if (!+sitNum.value || !sitNum.value.length) sitNum.focus();
+  else if (+grade.value) submit.click();
   up.addEventListener("click", function () {
     scrollTo({
       top: 0,

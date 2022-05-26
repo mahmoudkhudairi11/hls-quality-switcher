@@ -85,6 +85,15 @@ h2, h3 {
   border: none;
   cursor: pointer;
 }
+.sitting-num .sit-num::-webkit-outer-spin-button,
+.sitting-num .sit-num::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.sitting-num .sit-num[type="number"] {
+  -moz-appearance: none;
+  appearance: none;
+}
 .sitting-num .sit-num:focus {
   cursor: text;
 }
@@ -112,11 +121,20 @@ h2, h3 {
   width: 100%;
 }
 .grade {
-  color: var(--main-color);
+  color: #aaa;
   border: 1px solid var(--main-color);
   cursor: pointer;
   border-radius: 6px;
   padding: 12px 16px;
+}
+.grade.active {
+  color: var(--main-color);
+}
+.grade :checked[value] {
+  font-weight: bold;
+}
+.grade [value] {
+  color: var(--main-color);
 }
 .submit {
   background-color: #fff;
@@ -132,10 +150,10 @@ h2, h3 {
   color: #fff;
 }
 .submit:disabled {
-  background-color: var(--main-color)10;
+  background-color: #fff;
   cursor: default;
-  color: var(--main-color);
-  border-color: #000;
+  color: #aaa;
+  border-color: #ddd;
 }
 .color-explain {
   width: fit-content;
