@@ -19,6 +19,21 @@ body {
   grid-template-rows: 300px 1fr 50px;
   gap: 30px;
 }
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media (max-width: 991px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1199px) {
+  body {
+    font-size: 18px;
+  }
+}
 body.downloading::after {
   content: "";
   position: absolute;
@@ -160,7 +175,7 @@ h2, h3 {
   margin: auto;
 }
 .color-explain h5 {
-  font-size: 30px;
+  font-size: 1.25em;
   margin: 0;
   width: fit-content;
 }
@@ -168,7 +183,6 @@ h2, h3 {
   margin: 0 auto 70px;
   width: fit-content;
   line-height: 3;
-  font-size: 24px;
 }
 .color-explain .entries .entry {
   position: relative;
@@ -177,13 +191,13 @@ h2, h3 {
 .color-explain .entries .entry::before {
   content: "";
   position: absolute;
-  width: 30px;
-  height: 30px;
-  top: 6px;
+  width: 1em;
+  height: 1em;
+  top: 0.4em;
   bottom: 0;
-  right: -45px;
+  right: -1.7em;
   margin: auto;
-  border: 2px solid;
+  border: 0.1em solid;
   border-radius: 50%;
 }
 .color-explain .entries .entry:first-child::before {
@@ -227,7 +241,7 @@ h2, h3 {
 .rights {
   grid-row: 3;
   text-align: center;
-  font-size: 16px;
+  font-size: .67em;
   display: flex;
   justify-content: center;
   align-items: center;
