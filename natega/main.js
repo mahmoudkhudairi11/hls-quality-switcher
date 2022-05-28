@@ -15,7 +15,7 @@
     return req.result;
   }
   async function add(n, entry) {
-    let req = db.transaction(["grade-4", "grade-5", "grade-6"], "readwrite").objectStore(n).add(entry);
+    let req = db.transaction(["grade-4", "grade-5", "grade-6"], "readwrite").objectStore(n).put(entry);
     await new Promise(rs => req.addEventListener("success", rs));
   }
   async function get(n, sitNum) {
@@ -24,20 +24,20 @@
     return req.result;
   }
   let gds = [4, 5, 6];
-  if (!localStorage.noMoreUpgrades) {
-    let lts = {4: 185, 5: 162, 6: 179};
-    for (let g of gds) {
-      if (!db.objectStoreNames.contains(`grade-${g}`)) createObjectStore(db, `grade-${g}`);
-    }
-    await new Promise(rs => tr.addEventListener("complete", rs));
-    for (let g of gds) {
-      if (await count(`grade-${g}`) != lts[g]) {
-        let data = await (await fetch(`grades/${g}.json`)).json();
-        for (let student of data) await add(`grade-${g}`, student);
-      }
-    }
-    if (gds.every(async g => await count(`grade-${g}`) == lts[g])) localStorage.noMoreUpgrades = true;  
+  // if (!localStorage.noMoreUpgrades) {
+  let lts = {4: 185, 5: 162, 6: 179};
+  for (let g of gds) {
+    if (!db.objectStoreNames.contains(`grade-${g}`)) createObjectStore(db, `grade-${g}`);
   }
+  await new Promise(rs => tr.addEventListener("complete", rs));
+  for (let g of gds) {
+    if (await count(`grade-${g}`) != lts[g]) {
+      let data = await (await fetch(`grades/${g}.json`)).json();
+      for (let student of data) await add(`grade-${g}`, student);
+    }
+  }
+  //   if (gds.every(async g => await count(`grade-${g}`) == lts[g])) localStorage.noMoreUpgrades = true;  
+  // }
   document.body.classList.remove("downloading");
   if (!window?.localStorage?.sitAlert) {
     alert("الرجاء التأكد من كتابة رقم الجلوس باللغة الإنجليزية");
