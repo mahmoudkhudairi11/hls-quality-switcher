@@ -10,16 +10,16 @@
     db.createObjectStore(n, {keyPath: "sitNum"});
   }
   async function count(n) {
-    let req = db.transaction(["grade-4", "grade-5", "grade-6"]).objectStore(n).count();
+    let req = db.transaction(n).objectStore(n).count();
     await new Promise(rs => req.addEventListener("success", rs));
     return req.result;
   }
   async function add(n, entry) {
-    let req = db.transaction(["grade-4", "grade-5", "grade-6"], "readwrite").objectStore(n).put(entry);
+    let req = db.transaction(n, "readwrite").objectStore(n).put(entry);
     await new Promise(rs => req.addEventListener("success", rs));
   }
   async function get(n, sitNum) {
-    let req = db.transaction(["grade-4", "grade-5", "grade-6"], "readwrite").objectStore(n).get(sitNum);
+    let req = db.transaction(n, "readwrite").objectStore(n).get(sitNum);
     await new Promise(rs => req.addEventListener("success", rs));
     return req.result;
   }
@@ -29,7 +29,7 @@
   for (let g of gds) {
     if (!db.objectStoreNames.contains(`grade-${g}`)) createObjectStore(db, `grade-${g}`);
   }
-  await new Promise(rs => tr.addEventListener("complete", rs));
+  if (tr) await new Promise(rs => tr.addEventListener("complete", rs));
   for (let g of gds) {
     if (await count(`grade-${g}`) != lts[g]) {
       let data = await (await fetch(`grades/${g}.json`)).json();
