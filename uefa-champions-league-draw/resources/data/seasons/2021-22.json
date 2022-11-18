@@ -1,0 +1,153 @@
+{
+  "pots": [
+    [
+      {
+        "country": "ENG",
+        "name": "Chelsea"
+      },
+      {
+        "country": "ESP",
+        "name": "Villarreal"
+      },
+      {
+        "country": "ESP",
+        "name": "Atlético Madrid"
+      },
+      {
+        "country": "ENG",
+        "name": "Manchester City"
+      },
+      {
+        "country": "GER",
+        "name": "Bayern München"
+      },
+      {
+        "country": "ITA",
+        "name": "Inter Milan"
+      },
+      {
+        "country": "FRA",
+        "name": "Lille"
+      },
+      {
+        "country": "POR",
+        "name": "Sporting CP Lisbon"
+      }
+    ],
+    [
+      {
+        "country": "ESP",
+        "name": "Real Madrid"
+      },
+      {
+        "country": "ESP",
+        "name": "Barcelona"
+      },
+      {
+        "country": "ITA",
+        "name": "Juventus"
+      },
+      {
+        "country": "ENG",
+        "name": "Manchester United"
+      },
+      {
+        "country": "FRA",
+        "name": "Paris Saint-Germain"
+      },
+      {
+        "country": "ENG",
+        "name": "Liverpool"
+      },
+      {
+        "country": "ESP",
+        "name": "Sevilla"
+      },
+      {
+        "country": "GER",
+        "name": "Borussia Dortmund"
+      }
+    ],
+    [
+      {
+        "country": "POR",
+        "name": "Porto"
+      },
+      {
+        "country": "NED",
+        "name": "Ajax"
+      },
+      {
+        "country": "UKR",
+        "name": "Shakhtar Donetsk"
+      },
+      {
+        "country": "GER",
+        "name": "RB Leipzig"
+      },
+      {
+        "country": "AUT",
+        "name": "FC Salzburg"
+      },
+      {
+        "country": "POR",
+        "name": "Benfica"
+      },
+      {
+        "country": "ITA",
+        "name": "Atalanta"
+      },
+      {
+        "country": "RUS",
+        "name": "Zenit St. Petersburg"
+      }
+    ],
+    [
+      {
+        "country": "TUR",
+        "name": "Besiktas"
+      },
+      {
+        "country": "UKR",
+        "name": "Dynamo Kyiv"
+      },
+      {
+        "country": "BEL",
+        "name": "Club Brugge"
+      },
+      {
+        "country": "SUI",
+        "name": "Young Boys"
+      },
+      {
+        "country": "ITA",
+        "name": "AC Milan"
+      },
+      {
+        "country": "SWE",
+        "name": "Malmö FF"
+      },
+      {
+        "country": "GER",
+        "name": "Wolfsburg"
+      },
+      {
+        "country": "MDA",
+        "name": "Sheriff Tiraspol"
+      }
+    ]
+  ],
+  "pairings": [
+    ["Real Madrid", "Barcelona"],
+    ["Sevilla", "Atlético Madrid"],
+    ["Manchester City", "Chelsea"],
+    ["Bayern München", "Borussia Dortmund"],
+    ["RB Leipzig", "Wolfsburg"],
+    ["Juventus", "Inter Milan"],
+    ["AC Milan", "Atalanta"],
+    ["Paris Saint-Germain", "Lille"],
+    ["Liverpool", "Manchester United"],
+    ["Porto", "Benfica"],
+    ["Shakhtar Donetsk", "Dynamo Kyiv"]
+  ]
+}

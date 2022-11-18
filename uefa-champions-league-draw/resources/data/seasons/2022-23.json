@@ -1,0 +1,153 @@
+{
+  "pots": [
+    [
+      {
+        "name": "Real Madrid",
+        "country": "ESP"
+      },
+      {
+        "name": "Eintracht Frankfurt",
+        "country": "GER"
+      },
+      {
+        "name": "Manchester City",
+        "country": "ENG"
+      },
+      {
+        "name": "Milan",
+        "country": "ITA"
+      },
+      {
+        "name": "Bayern Munich",
+        "country": "GER"
+      },
+      {
+        "name": "Paris Saint-Germain",
+        "country": "FRA"
+      },
+      {
+        "name": "Porto",
+        "country": "POR"
+      },
+      {
+        "name": "Ajax",
+        "country": "NED"
+      }
+    ],
+    [
+      {
+        "name": "Liverpool",
+        "country": "ENG"
+      },
+      {
+        "name": "Chelsea",
+        "country": "ENG"
+      },
+      {
+        "name": "Barcelona",
+        "country": "ESP"
+      },
+      {
+        "name": "Juventus",
+        "country": "ITA"
+      },
+      {
+        "name": "Atlético Madrid",
+        "country": "ESP"
+      },
+      {
+        "name": "Sevilla",
+        "country": "ESP"
+      },
+      {
+        "name": "RB Leipzig",
+        "country": "GER"
+      },
+      {
+        "name": "Tottenham Hotspur",
+        "country": "ENG"
+      }
+    ],
+    [
+      {
+        "name": "Borussia Dortmund",
+        "country": "GER"
+      },
+      {
+        "name": "Red Bull Salzburg",
+        "country": "AUT"
+      },
+      {
+        "name": "Shakhtar Donetsk",
+        "country": "UKR"
+      },
+      {
+        "name": "Inter Milan",
+        "country": "ITA"
+      },
+      {
+        "name": "Napoli",
+        "country": "ITA"
+      },
+      {
+        "name": "Benfica",
+        "country": "POR"
+      },
+      {
+        "name": "Sporting CP",
+        "country": "POR"
+      },
+      {
+        "name": "Bayer Leverkusen",
+        "country": "GER"
+      }
+    ],
+    [
+      {
+        "name": "Rangers",
+        "country": "SCO"
+      },
+      {
+        "name": "Dinamo Zagreb",
+        "country": "CRO"
+      },
+      {
+        "name": "Marseille",
+        "country": "FRA"
+      },
+      {
+        "name": "Copenhagen",
+        "country": "DEN"
+      },
+      {
+        "name": "Club Brugge",
+        "country": "BEL"
+      },
+      {
+        "name": "Celtic",
+        "country": "SCO"
+      },
+      {
+        "name": "Viktoria Plzeň",
+        "country": "CZE"
+      },
+      {
+        "name": "Red Star Belgrade",
+        "country": "SRB"
+      }
+    ]
+  ],
+  "pairings": [
+    ["Real Madrid", "Barcelona"],
+    ["Eintracht Frankfurt", "RB Leipzig"],
+    ["Manchester City", "Liverpool"],
+    ["Milan", "Napoli"],
+    ["Bayern Munich", "Borussia Dortmund"],
+    ["Paris Saint-Germain", "Marseille"],
+    ["Porto", "Benfica"],
+    ["Chelsea", "Tottenham Hotspur"],
+    ["Juventus", "Inter Milan"],
+    ["Atlético Madrid", "Sevilla"],
+    ["Rangers", "Celtic"]
+  ]
+}

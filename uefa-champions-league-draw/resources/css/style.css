@@ -1,0 +1,246 @@
+@font-face {
+  font-family: Novarese;
+  src: url("../font/NovareseStd-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "PT Sans";
+  src: url("../font/PTSansProRegular.OTF") format("opentype");
+}
+::-webkit-scrollbar {
+  width: 0;
+}
+* {
+  box-sizing: border-box;
+  cursor: default;
+}
+a[href] {
+  cursor: pointer;
+}
+body {
+  background-image: url("../img/back.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: Novarese;
+}
+#controls {
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  user-select: none;
+  -moz-user-select: none;
+}
+#controls input {
+  cursor: pointer;
+}
+#controls label {
+  cursor: pointer;
+}
+#controls .animation label {
+  display: flex;
+  cursor: default;
+}
+#cl {
+  display: flex;
+  justify-content: space-around;
+}
+.pots {
+  max-width: 70%;
+}
+.pots td[data-name] span {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.pots .done {
+  color: #aaa;
+  text-decoration: line-through;
+}
+table {
+  color: #ddd;
+  background-color: #00004bbb;
+  font-family: "PT Sans"!important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+table, table th, table td {
+  border-spacing: 0;
+  border: 1px solid #fff1;
+}
+table th {
+  padding: 5px 10px;
+}
+table thead th {
+  height: 50px;
+}
+table tbody tr {
+  height: 40px;
+}
+table th.current {
+  color: #0075FF;
+}
+table td {
+  padding: 4px 8px;
+}
+.flag {
+  width: 24px;
+  vertical-align: middle;
+  border: 1px solid #fff4;
+}
+.selective {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.draw {
+  width: 30%;
+}
+.draw .current-step {
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #000b;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+  transition: 2s;
+}
+@keyframes flush {
+  from {
+    color: #fff;
+  }
+  to {
+    color: #00FF75;
+  }
+}
+.draw .current-step.clickable {
+  font-size: 1.5em;
+  cursor: pointer;
+  animation: alternate 1s infinite flush;
+}
+.draw .current-step a[href] {
+  color: #0075ff;
+  text-decoration: none;
+}
+.available-groups {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.available-groups .available-group {
+  border: 1px solid;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.available-groups .available-group.red {
+  color: #FF0075;
+}
+.available-groups .available-group.blue {
+  color: #0075FF;
+}
+.selective .ball {
+  width: 50px;
+  filter: invert(1);
+  transition: transform 3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity .3s linear;
+}
+.selective .ball.clickable {
+  cursor: pointer;
+}
+.selective .ball.rotate {
+  transform: rotate(720deg);
+}
+.selective .ball.off {
+  opacity: 0.5;
+}
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  gap: 50px;
+  justify-content: center;
+}
+.groups .group.red thead th {
+  color: #FF0075;
+}
+.groups .group.blue thead th {
+  color: #0075FF;
+}
+.group td span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(transparent, #000a);
+  opacity: 0;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4em;
+  /* text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000; */
+  transition: opacity 1s;
+}
+.background.white {
+  color: #fff;
+}
+.background.red {
+  color: #FF0075;
+}
+.background.blue {
+  color: #0075FF;
+}
+.background.show {
+  opacity: 1;
+}
+@media screen and (width < 1124px) {
+  #controls {
+    font-size: 1.7vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .pots {
+    max-width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 2vw;
+  }
+  .pots td[data-name] span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+    text-align: center;
+  }
+  .flag {
+    width: 2em;
+  }
+  .draw {
+    max-width: 90%;
+    margin: auto;
+  }
+  #cl {
+    display: block;
+    justify-content: unset;
+  }
+  .draw .current-step {
+    font-size: 1em;
+  }
+  .selective .ball {
+    width: 32px;
+  }
+  .background {
+    font-size: 2em;
+  }
+}
